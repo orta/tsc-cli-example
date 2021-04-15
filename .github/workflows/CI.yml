@@ -8,31 +8,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+    # Checkout and leave the chance for us to override the creds
     - uses: actions/checkout@v2
       with:
         persist-credentials: false 
         fetch-depth: 0 
 
+    # My example is a Deno app
     - uses: denolib/setup-deno@v2
       with:
         deno-version: v1.x
+
+    # Need python set up because we use pip to grab asciicinema
+    # which records a terminal session to a .json file
     - uses: actions/setup-python@v2
       with:
         python-version: 3.9
-    - uses: actions/setup-node@v1
-      with:
-        node-version: "13.x"
 
+    # My fork has hardcoded column and row widths 
+    # ( https://github.com/orta/asciinema/blob/develop/asciinema/term.py )
     - name: Setup
       run: |
-        npm install --global asciicast2gif
-        #sudo pip3 install asciinema
         sudo pip install git+https://github.com/orta/asciinema.git
 
+    # Run the command in the context of asciinema
     - name: Run
       run: |
         asciinema rec recording.cast -c 'deno run index.ts'
 
+    # Use a third party action to write the GIF, it's a bunch
+    # of docker faff, so worth the cost of the 3rd party dep
     - name: Asciicast file to GIF
       uses: dgzlopes/asciicast-to-gif-action@v1.0
       with:
@@ -40,8 +45,9 @@ jobs:
         output: screencast.gif
         theme: tango
         speed: 0.5
-        scale: 1
+        scale: 0.8
 
+    # Now the GIF has been written, commit the GIF and push it to the repo
     - name: Run
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
