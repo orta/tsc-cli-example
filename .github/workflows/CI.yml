@@ -19,22 +19,21 @@ jobs:
       with:
         deno-version: v1.x
 
-    # Need python set up because we use pip to grab asciicinema
-    # which records a terminal session to a .json file
-    - uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
+    - uses: actions/setup-go@v2
 
     # My fork has hardcoded column and row widths 
     # ( https://github.com/orta/asciinema/blob/develop/asciinema/term.py )
     - name: Setup
       run: |
-        sudo pip install git+https://github.com/orta/asciinema.git
+        sudo apt-get install -y ttyrec
+        go get github.com/sugyan/ttygif
+
 
     # Run the command in the context of asciinema
     - name: Run
       run: |
-        asciinema rec recording.cast -c 'deno run index.ts'
+        ttyrec -e 'deno run index.ts' recording.rec
+        ttygif -in recording.rec -out screencast.gif -s 0.9 -noloop true
 
     # Use a third party action to write the GIF, it's a bunch
     # of docker faff, so worth the cost of the 3rd party dep
