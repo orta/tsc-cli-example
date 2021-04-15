@@ -29,6 +29,8 @@ jobs:
         sudo apt-get install ncurses-bin
         sudo apt-get install  ncurses-base
 
+        which tput
+
     - name: Run
       run: |
         asciinema rec recording.cast -c 'deno run index.ts'
