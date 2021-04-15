@@ -33,7 +33,7 @@ jobs:
     - name: Run
       run: |
         ttyrec -e 'deno run index.ts' recording.rec
-        ttygif -in recording.rec -out screencast.gif -s 0.9 -noloop true
+        ttyrec2gif -in recording.rec -out screencast.gif -s 0.9 -noloop true
 
     # Use a third party action to write the GIF, it's a bunch
     # of docker faff, so worth the cost of the 3rd party dep
