@@ -37,7 +37,7 @@ jobs:
       uses: dgzlopes/asciicast-to-gif-action@v1.0
       with:
         input: recording.cast
-        output: imgs/screencast.gif
+        output: screencast.gif
         theme: tango
         speed: 0.5
         scale: 1
