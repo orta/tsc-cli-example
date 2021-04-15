@@ -23,6 +23,7 @@ jobs:
       run: |
         npm install --global asciicast2gif
         sudo pip3 install asciinema
+        sudo apt-get install ncurses-bin
         sudo apt-get install libncurses5-dev libncursesw5-dev
 
     - name: Run
