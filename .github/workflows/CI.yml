@@ -46,6 +46,10 @@ jobs:
         theme: tango
         speed: 0.5
         scale: 0.8
+      env:
+        GIFSICLE_OPTS: --no-loopcount -k 64 -O2 -Okeep-empty
+        WIDTH: 120
+        HEIGHT: 100
 
     # Now the GIF has been written, commit the GIF and push it to the repo
     - name: Run
