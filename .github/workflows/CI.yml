@@ -23,7 +23,7 @@ jobs:
       run: |
         npm install --global asciicast2gif
         #sudo pip3 install asciinema
-        sudo pip install git+https://github.com/arp242/asciinema.git@termsize
+        sudo pip install git+https://github.com/orta/asciinema.git
 
         sudo apt-get update 
         sudo apt-get install ncurses-bin
