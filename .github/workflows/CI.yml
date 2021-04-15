@@ -14,14 +14,18 @@ jobs:
         deno-version: v1.x
     - uses: actions/setup-python@v2
       with:
-        python-version: 3.9
+        python-version: 3.3
     - uses: actions/setup-node@v1
       with:
         node-version: "13.x"
 
-    - run: |
+    - name: Setup
+      run: |
         npm install --global asciicast2gif
         sudo pip3 install asciinema
+
+    - name: Run
+      run: |
         asciinema rec recording.cast -c 'deno run index.ts'
         asciicast2gif recording.cast demo.gif
 
