@@ -11,6 +11,6 @@ deno install --allow-read --allow-run --allow-write -f --unstable https://deno.l
 denon index.ts
 ```
 
-Looks like:
+Currently looks like:
 
-![imgs/preview.gif](imgs/preview.gif)
+![screencast.gif](screencast.gif)
