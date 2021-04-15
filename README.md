@@ -10,3 +10,7 @@ deno run index.ts
 deno install --allow-read --allow-run --allow-write -f --unstable https://deno.land/x/denon/denon.ts 
 denon index.ts
 ```
+
+Looks like:
+
+![imgs/preview.gif](imgs/preview.gif)
