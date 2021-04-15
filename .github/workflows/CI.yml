@@ -24,10 +24,9 @@ jobs:
     # My fork has hardcoded column and row widths 
     # ( https://github.com/orta/asciinema/blob/develop/asciinema/term.py )
     - name: Setup
-      run: |
-        sudo apt-get install -y ttyrec
-        go get github.com/sugyan/ttygif
+      run: sudo apt-get install -y ttyrec
 
+    - run: go get github.com/sugyan/ttygif
 
     # Run the command in the context of asciinema
     - name: Run
