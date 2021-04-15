@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+
+jobs:
+  ci:
+    steps:
+
+    - uses: actions/checkout@v2
+    - uses: denolib/setup-deno@v2
+      with:
+        deno-version: v1.x
+    - uses: actions/setup-python@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: "13.x"
+
+    - run: |
+        npm install --global asciicast2gif
+        sudo pip3 install asciinema
+        asciinema rec recording.cast -c 'deno run index.ts'
+        asciicast2gif recording.cast demo.gif
+
+
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Cast
+        path: recording.cast
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: GIF
+        path: demo.gif
+
