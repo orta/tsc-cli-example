@@ -25,13 +25,18 @@ jobs:
         #sudo pip3 install asciinema
         sudo pip install git+https://github.com/orta/asciinema.git
 
-        sudo apt-get update 
-        sudo apt-get install -y gifsicle
     - name: Run
       run: |
         asciinema rec recording.cast -c 'deno run index.ts'
-        asciicast2gif recording.cast demo.gif
 
+    - name: Asciicast file to GIF
+      uses: dgzlopes/asciicast-to-gif-action@v1.0
+      with:
+        input: recording.cast
+        output: demo.gif
+        theme: tango
+        speed: 0.5
+        scale: 1
 
     - uses: actions/upload-artifact@v2
       with:
