@@ -23,14 +23,14 @@ jobs:
       run: |
         npm install --global asciicast2gif
         sudo pip3 install asciinema
+        sudo apt-get update 
         sudo apt-get install ncurses-bin
-        sudo apt-get install libncurses5-dev libncursesw5-dev
+        sudo apt-get install  ncurses-base
 
     - name: Run
       run: |
         asciinema rec recording.cast -c 'deno run index.ts'
         asciicast2gif recording.cast demo.gif
-
 
 
     - uses: actions/upload-artifact@v2
