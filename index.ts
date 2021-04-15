@@ -82,7 +82,7 @@ flag("force", "Build all projects, including those that appear to be up to date.
 flag("verbose", "Enable verbose logging.")
 
 const prefix = " ".repeat(100)
-const tsSquareTop = bgBlue("     ")
+const tsSquareTop = blue(bgBlue("....."))
 const tsSquareBottom = bgBlue(white(bold("  TS ")))
 console.log("")
 console.log(prefix + tsSquareTop);

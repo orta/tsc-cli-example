@@ -2,7 +2,7 @@
 
 To run this:
 
-```
+```sh
 git clone https://github.com/orta/tsc-cli-example
 deno run index.ts
 
