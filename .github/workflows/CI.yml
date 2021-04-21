@@ -14,4 +14,8 @@ jobs:
       with:
         deno-version: v1.x
 
-    - run: deno run index.ts
+    - name: "Run --help"
+      run: deno run index.ts
+
+    - name: "Run --help --all"
+      run: deno run index.ts --all
