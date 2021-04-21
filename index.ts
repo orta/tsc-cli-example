@@ -14,10 +14,6 @@ title("Common commands")
 console.log(`  ${blue(bold("tsc"))} 
   Type checks, and emits outputs for a project in the current working directory 
 
-  ${blue(bold("tsc app.ts util.ts"))} 
-  Type checks, and emits outputs for the file index.ts with default compiler options.
-  Without ${blue(bold("-p"))} this will ignore any tsconfig.json files.
-
   ${blue(bold("tsc -p ./path/to/tsconfig.json"))} 
   Runs the TypeScript project defined in another folder
 
@@ -29,6 +25,10 @@ console.log(`  ${blue(bold("tsc"))}
 
   ${blue(bold("tsc --noEmit"))} 
   Runs the TypeScript type-checker but does not create .js, .d.ts and .map files
+
+  ${blue(bold("tsc app.ts util.ts"))} 
+  Type checks, and emits outputs for the file index.ts with default compiler options.
+  ${bold(`Without ${blue(bold("-p"))} this will ignore any tsconfig.json files.`)}
 
   ${blue(bold("tsc @args.txt"))} 
   Use the file 'args.txt' to set command line options bypassing command line length limits`)
