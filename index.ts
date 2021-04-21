@@ -12,31 +12,31 @@ console.log("tsc @args.txt")
 
 title("Common commands")
 console.log(`  ${blue(bold("tsc"))} 
-  Type checks, and emits outputs for a project in the current working directory 
+  Type checks, and emits outputs for a project in the current working directory.
 
   ${blue(bold("tsc -p ./path/to/tsconfig.json"))} 
-  Runs the TypeScript project defined in another folder
+  Runs the TypeScript project defined in another folder.
 
   ${blue(bold("tsc --init"))} 
-  Creates a tsconfig.json with the recommended settings in the current directory
+  Creates a tsconfig.json with the recommended settings in the current directory.
 
   ${blue(bold("tsc --help --all"))} 
-  An expanded version of this information showing all options 
+  An expanded version of this information, showing all possible compiler options.
 
   ${blue(bold("tsc --noEmit"))} 
-  Runs the TypeScript type-checker but does not create .js, .d.ts and .map files
+  Runs the TypeScript type-checker but does not create .js, .d.ts and .map files.
 
   ${blue(bold("tsc app.ts util.ts"))} 
   Type checks, and emits outputs for the file index.ts with default compiler options.
   ${bold(`Without ${blue(bold("-p"))} this will ignore any tsconfig.json files.`)}
 
   ${blue(bold("tsc @args.txt"))} 
-  Use the file 'args.txt' to set command line options bypassing command line length limits`)
+  Use the file 'args.txt' to set command line options bypassing command line length limits.`)
   
 title("Common Compiler Options")
 console.log("")
 
-flag("target, -t", "Specify library files to be included in the compilation.")
+flag("target, -t", "Set the JavaScript language version for emitted JavaScript\n                     and include compatible library declarations.")
 console.log(`
     with:    'es3' (default), 'es5', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 
              'es2020', or 'esnext'.
@@ -100,22 +100,3 @@ console.log("")
 console.log(prefix + tsSquareTop);
 console.log(prefix + tsSquareBottom);
 console.log("\n")
-
-
-// Version 4.3.0-beta
-// Syntax:   tsc [options] [file...]
-
-// Examples: tsc hello.ts
-//           tsc --outFile file.js file.ts
-//           tsc @args.txt
-//           tsc --build tsconfig.json
-
-// Options:
-//  -h, --help                                         Print this message.
-//  -w, --watch                                        Watch input files.
-//  --pretty                                           Stylize errors and messages using color and context (experimental).
-//  --all                                              Show all compiler options.
-//  -v, --version                                      Print the compiler's version.
-//  --init                                             Initializes a TypeScript project and creates a tsconfig.json file.
-//  -p FILE OR DIRECTORY, --project FILE OR DIRECTORY  Compile the project given the path to its configuration file, or to a folder with a 'tsconfig.json'.
-//  -b, --build                 
