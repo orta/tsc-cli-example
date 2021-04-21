@@ -1,16 +1,17 @@
 import { blue, bgBlue, white, bold } from "https://deno.land/std/fmt/colors.ts";
+console.clear()
 
 const title = (str: string) => console.log("\n" + bold(str.toUpperCase()) + "\n")
 const flag = (name: string, desc: string) => {
   
-  console.log(`  ${bold(blue("--" + name))}   ${desc}`)
+  console.log(`  ${bold(blue(name))}   ${desc}`)
 }
 // const values = (values: string) => console.log("  values any of: " + values)
 
 const isAll = Deno.args.find(f => f === "--all")
 
 const prefix = " ".repeat(100)
-const tsSquareTop = blue(bgBlue("     "))
+const tsSquareTop = blue(bgBlue("....."))
 const tsSquareBottom = bgBlue(white(bold("  TS ")))
 
 console.log("")
@@ -43,26 +44,35 @@ if (!isAll) {
 title("Common Compiler Options")
 console.log("")
 
-flag("target, -t", "Set the JavaScript language version for emitted JavaScript\n                 and include compatible library declarations.")
+flag("--target, -t", "Set the JavaScript language version for emitted JavaScript\n                 and include compatible library declarations.")
 console.log(`
           with:  ${bold("'es3' (default)")}, 'es5', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 
                  'es2020', or 'esnext'.
 `)
 
-flag("lib", "Specify library files to be included in the compilation.")
+flag("        --lib", "Specify library files to be included in the compilation.")
 console.log(`
-    with:  ${bold("'es5' (default)")}, 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'esnext'
-             'dom' or 'webworker'
+          with:  ${bold("'es5' (default)")}, 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'esnext'
+                 'dom' or 'webworker'
 `)
 
 
-flag("module, -m", "Specify module code generation.")
+flag(" --module, -m", "Specify module code generation.")
 console.log(`
-    with:     'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'esnext''
+          with:  'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'esnext''
+       default:  ${bold("CommonJS")}  if target is ES3 or ES5
+                 ${bold("ES6/ES2015")} if target is ES6 and higher
 `)
 
-flag("strict", "Enable all strict type-checking options.")
-flag("noEmit", "Do not emit outputs.")
+flag("        --jsx", "Specify library files to be included in the compilation.")
+console.log(`
+          with:  'preserve', 'react-native', 'react', 'react-jsx' or 'react-jsxdev'
+`)
+
+flag("     --strict", "Enable all strict type-checking options.")
+flag("     --noEmit", "Do not emit outputs.")
+flag("     --outDir", "Do not emit outputs.")
+
 
 console.log(`
 You can learn about all of the compiler options at https://aka.ms/tsconfig-reference
