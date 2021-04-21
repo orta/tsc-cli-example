@@ -14,20 +14,24 @@ title("Common commands")
 console.log(`  ${blue(bold("tsc"))} 
   Type checks, and emits outputs for a project in the current working directory 
 
+  ${blue(bold("tsc app.ts util.ts"))} 
+  Type checks, and emits outputs for the file index.ts with default compiler options.
+  Without ${blue(bold("-p"))} this will ignore any tsconfig.json files.
+
+  ${blue(bold("tsc -p ./path/to/tsconfig.json"))} 
+  Runs the TypeScript project defined in another folder
+
   ${blue(bold("tsc --init"))} 
   Creates a tsconfig.json with the recommended settings in the current directory
 
   ${blue(bold("tsc --help --all"))} 
   An expanded version of this information showing all options 
 
-  ${blue(bold("tsc -p ./path/to/tsconfig.json"))} 
-  Runs the TypeScript project defined in another folder
-
   ${blue(bold("tsc --noEmit"))} 
   Runs the TypeScript type-checker but does not create .js, .d.ts and .map files
 
   ${blue(bold("tsc @args.txt"))} 
-  Use the file 'args.txt' to set command line options. The file `)
+  Use the file 'args.txt' to set command line options bypassing command line length limits`)
   
 title("Common Compiler Options")
 console.log("")
@@ -61,28 +65,36 @@ console.log(`
 flag("strict", "Enable all strict type-checking options.")
 flag("noEmit", "Do not emit outputs.")
 
+console.log(`
+You can learn about all of the compiler options at https://aka.ms/tsconfig-reference
+`)
+
 
 title("Watch Options")
 
-flag("watch", "Start watching the current project for changes.")
+console.log(`Including ${blue(bold("--watch"))}, ${blue(bold("-w"))} will start watching the current project for file changes. 
+Once set, you can configure watch mode with:
+`)
+
 flag("excludeFiles", "Start watching the current project for changes.")
 flag("excludeDirectories", "Start watching the current project for changes.")
 flag("watchFile", "Start watching the current project for changes.")
 flag("watchDirectory", "Start watching the current project for changes.")
 flag("fallbackPolling", "Start watching the current project for changes.")
 
-
-
 title("Build Option")
 
-flag("build", "Specify library files to be included in the compilation.")
+console.log(`Using ${blue(bold("--build"))}, ${blue(bold("-b"))} will make tsc behave more like a build orchestrator than a compiler.
+This is used to trigger building composite projects which you can learn more about at https://aka.ms/tsc-composite-builds.
+`)
+
 flag("clean", "Delete the outputs of all projects.")
 flag("dry", "Show what would be built (or deleted, if specified with '--clean'.")
 flag("force", "Build all projects, including those that appear to be up to date.")
 flag("verbose", "Enable verbose logging.")
 
 const prefix = " ".repeat(100)
-const tsSquareTop = blue(bgBlue("....."))
+const tsSquareTop = blue(bgBlue("     "))
 const tsSquareBottom = bgBlue(white(bold("  TS ")))
 console.log("")
 console.log(prefix + tsSquareTop);
