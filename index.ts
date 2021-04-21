@@ -11,7 +11,7 @@ console.log("tsc [options] [files...]")
 console.log("tsc @args.txt")
 
 title("Common commands")
-console.log(`${blue(bold("tsc"))} 
+console.log(`  ${blue(bold("tsc"))} 
   Type checks, and emits outputs for a project in the current working directory 
 
   ${blue(bold("tsc --init"))} 
