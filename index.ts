@@ -1,7 +1,7 @@
 import { blue, bgBlue, white, bold } from "https://deno.land/std/fmt/colors.ts";
 console.clear();
 
-const title = (str: string) => console.log("\n" + bold(str.toUpperCase()) + "\n");
+const title = (str: string) => console.log(bold(str.toUpperCase()) + "\n");
 const subtitle = (str: string) => console.log("\n### " + str + "\n");
 const flag = (name: string, desc: string) => {
   console.log(`  ${bold(blue(name))}   ${desc}`);
@@ -128,6 +128,7 @@ You can learn about all of the compiler options at https://aka.ms/tsconfig-refer
 `);
 
 if (isAll) {
+  console.log("")
   title("Watch Options");
 
   console.log(`Including ${blue(bold("--watch"))}, ${blue(
@@ -148,6 +149,7 @@ Once set, you can configure watch mode with:
     "   Specify what approach the watcher should use if the system runs out of native file watchers."
   );
 
+  console.log("")
   title("Build Option");
 
   console.log(`Using ${blue(bold("--build"))}, ${blue(
