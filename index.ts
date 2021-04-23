@@ -6,7 +6,6 @@ const flag = (name: string, desc: string) => {
   
   console.log(`  ${bold(blue(name))}   ${desc}`)
 }
-// const values = (values: string) => console.log("  values any of: " + values)
 
 const isAll = Deno.args.find(f => f === "--all")
 
@@ -49,27 +48,27 @@ console.log("")
 
 flag("--target, -t", "Set the JavaScript language version for emitted JavaScript\n                 and include compatible library declarations.")
 console.log(`
-          with:  ${bold("'es3' (default)")}, 'es5', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 
+        any of:  ${bold("'es3' (default)")}, 'es5', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 
                  'es2020', or 'esnext'.
 `)
 
 flag("        --lib", "Specify library files to be included in the compilation.")
 console.log(`
-          with:  ${bold("'es5' (default)")}, 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'esnext'
+    one or more:  ${bold("'es5' (default)")}, 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'esnext'
                  'dom' or 'webworker'
 `)
 
 
 flag(" --module, -m", "Specify module code generation.")
 console.log(`
-          with:  'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'esnext''
+        any of:  'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'esnext''
        default:  ${bold("CommonJS")}  if target is ES3 or ES5
                  ${bold("ES6/ES2015")} if target is ES6 and higher
 `)
 
 flag("        --jsx", "Specify library files to be included in the compilation.")
 console.log(`
-          with:  'preserve', 'react-native', 'react', 'react-jsx' or 'react-jsxdev'
+        any of:  'preserve', 'react-native', 'react', 'react-jsx' or 'react-jsxdev'
 `)
 
 flag("     --strict", "Enable all strict type-checking options.")
