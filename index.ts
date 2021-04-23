@@ -26,6 +26,9 @@ if (!isAll) {
   ${blue(bold("tsc app.ts util.ts"))} 
   ${bold(`Ignoring tsconfig.json`)}, compiles the specified files with default compiler options.
 
+  ${blue(bold("tsc -b"))} 
+  Build a composite project in the working directory.
+
   ${blue(bold("tsc --init"))} 
   Creates a tsconfig.json with the recommended settings in the working directory.
 
@@ -83,25 +86,25 @@ if(isAll) {
   title("Watch Options")
 
   console.log(`Including ${blue(bold("--watch"))}, ${blue(bold("-w"))} will start watching the current project for file changes. 
-  Once set, you can configure watch mode with:
+Once set, you can configure watch mode with:
   `)
 
-  flag("excludeFiles", "Start watching the current project for changes.")
-  flag("excludeDirectories", "Start watching the current project for changes.")
-  flag("watchFile", "Start watching the current project for changes.")
-  flag("watchDirectory", "Start watching the current project for changes.")
-  flag("fallbackPolling", "Start watching the current project for changes.")
+  flag("--excludeFiles", "      Files which should not be watched for changes.")
+  flag("--excludeDirectories", "Folders which should not be watched for changes.")
+  flag("--watchFile", "         Specify how the TypeScript watch mode works.")
+  flag("--watchDirectory", "    Specify how directories are watched on systems that lack recursive file-watching functionality.")
+  flag("--fallbackPolling", "   Specify what approach the watcher should use if the system runs out of native file watchers.")
 
   title("Build Option")
 
   console.log(`Using ${blue(bold("--build"))}, ${blue(bold("-b"))} will make tsc behave more like a build orchestrator than a compiler.
-  This is used to trigger building composite projects which you can learn more about at https://aka.ms/tsc-composite-builds.
+This is used to trigger building composite projects which you can learn more about at https://aka.ms/tsc-composite-builds.
   `)
 
-  flag("clean", "Delete the outputs of all projects.")
-  flag("dry", "Show what would be built (or deleted, if specified with '--clean'.")
-  flag("force", "Build all projects, including those that appear to be up to date.")
-  flag("verbose", "Enable verbose logging.")
+  flag("--clean", "  Delete the outputs of all projects.")
+  flag("--dry", "    Show what would be built (or deleted, if specified with '--clean'.")
+  flag("--force", "  Build all projects, including those that appear to be up to date.")
+  flag("--verbose", "Enable verbose logging.")
 }
 console.log("")
 
