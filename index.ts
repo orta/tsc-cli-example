@@ -1,4 +1,4 @@
-import { blue, bgBlue, white, bold } from "https://deno.land/std/fmt/colors.ts";
+import { blue, bgBlue, rgb24, bold } from "https://deno.land/std/fmt/colors.ts";
 console.clear();
 
 const title = (str: string) => console.log(bold(str.toUpperCase()) + "\n");
@@ -11,7 +11,7 @@ const isAll = Deno.args.find((f) => f === "--all");
 
 const prefix = " ".repeat(100);
 const tsSquareTop = blue(bgBlue("....."));
-const tsSquareBottom = bgBlue(white(bold("  TS ")));
+const tsSquareBottom = bgBlue(bold(rgb24("  TS ", 0xffFFff)));
 
 console.log("");
 console.log(
@@ -72,7 +72,7 @@ if (!isAll) {
   console.log(`
         any of:  'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'esnext''
        default:  ${bold("CommonJS")}  if target is ES3 or ES5
-                  ${bold("ES6/ES2015")} if target is ES6 and higher
+                 ${bold("ES6/ES2015")} if target is ES6 and higher
   `);
 
   flag("        --jsx", "Specify library files to be included in the compilation.");

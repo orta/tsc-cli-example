@@ -1,9 +1,10 @@
 ### Setup
 
-To run this:
+To run this, first install Deno, then:
 
 ```sh
 git clone https://github.com/orta/tsc-cli-example
+cd tsc-cli-example
 deno run index.ts
 
 # or install a watcher for FS changes
