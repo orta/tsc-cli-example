@@ -90,11 +90,11 @@ else {
   title("All Compiler Options");
   console.log("### " + "Projects" + "\n");
 
-  flag("--composite", "Generates corresponding d.ts files");
+  flag("                               --composite", "Generates corresponding d.ts files");
   flag("--disableSourceOfProjectReferenceRedirect", "Generates corresponding d.ts files");
-  flag("--disableSolutionSearching", "Generates corresponding d.ts files");
-  flag("--tsBuildInfoFile", "Generates corresponding d.ts files");
-  flag("--disableReferencedProjectLoad", "Generates corresponding d.ts files");
+  flag("               --disableSolutionSearching", "Generates corresponding d.ts files");
+  flag("                        --tsBuildInfoFile", "Generates corresponding d.ts files");
+  flag("           --disableReferencedProjectLoad", "Generates corresponding d.ts files");
 
 
   subtitle("Language & Environment");
@@ -119,13 +119,12 @@ else {
 
 
   subtitle("Build");
-  flag("--declaration         ", "Generates corresponding d.ts files");
-  flag("--declarationDir      ", "Specify output directory for generated declaration files.");
-  flag("--emitDeclarationOnly ", "Only emit '.d.ts' declaration files");
-  flag("--declarationMap      ", "Generates a sourcemap for each corresponding '.d.ts' file");
-  flag(
-    "--downlevelIteration  ",
-    "Provide full support for iterables in 'for-of', spread, and destructuring when \n                           targeting 'ES5' or 'ES3'."
+  flag("        --declaration", "Generates corresponding d.ts files");
+  flag("     --declarationDir", "Specify output directory for generated declaration files.");
+  flag("--emitDeclarationOnly", "Only emit '.d.ts' declaration files");
+  flag("     --declarationMap", "Generates a sourcemap for each corresponding '.d.ts' file");
+  flag(" --downlevelIteration",
+    "Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'."
   );
 }
 
@@ -143,16 +142,11 @@ if (isAll) {
 Once set, you can configure watch mode with:
   `);
 
-  flag("--excludeFiles", "      Files which should not be watched for changes.");
+  flag("      --excludeFiles", "Files which should not be watched for changes.");
   flag("--excludeDirectories", "Folders which should not be watched for changes.");
-  flag("--watchFile", "         Specify how the TypeScript watch mode works.");
-  flag(
-    "--watchDirectory",
-    "    Specify how directories are watched on systems that lack recursive\n                         file-watching functionality."
-  );
-  flag(
-    "--fallbackPolling",
-    "   Specify what approach the watcher should use if the system runs out\n                         of native file watchers."
+  flag("         --watchFile", "Specify how the TypeScript watch mode works.");
+  flag("    --watchDirectory", "Specify how directories are watched on systems that lack recursive file-watching functionality.");
+  flag("   --fallbackPolling","Specify what approach the watcher should use if the system runs out of native file watchers."
   );
 
   console.log("\n")
@@ -165,9 +159,9 @@ This is used to trigger building composite projects which you can learn
 more about at https://aka.ms/tsc-composite-builds.
   `);
 
-  flag("--clean", "  Delete the outputs of all projects.");
-  flag("--dry", "    Show what would be built (or deleted, if specified with '--clean'.");
-  flag("--force", "  Build all projects, including those that appear to be up to date.");
+  flag("  --clean", "Delete the outputs of all projects.");
+  flag("    --dry", "Show what would be built (or deleted, if specified with '--clean'.");
+  flag("  --force", "Build all projects, including those that appear to be up to date.");
   flag("--verbose", "Enable verbose logging.");
 }
 console.log("");
