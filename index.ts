@@ -1,4 +1,4 @@
-import { blue, bgBlue, rgb24, bold } from "https://deno.land/std/fmt/colors.ts";
+import { blue, bgBlue, rgb24, bold, gray } from "https://deno.land/std/fmt/colors.ts";
 console.clear();
 
 const title = (str: string) => console.log(bold(str.toUpperCase()) + "\n");
@@ -47,37 +47,38 @@ if (!isAll) {
   `);
 }
 
-title("Common Compiler Options\n");
 
 if (!isAll) {
+  title("Common Compiler Options\n");
 
   flag(
     "--target, -t",
     "Set the JavaScript language version for emitted JavaScript\n                 and include compatible library declarations."
   );
   console.log(`
-        any of:  ${bold("'es3' (default)")}, 'es5', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 
-                   'es2020', or 'esnext'.
+       any of:  'es3', 'es5', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 
+                 'es2020', or 'esnext'.
+      default:  ${bold("'es3'")}
   `);
 
-  flag("        --lib", "Specify library files to be included in the compilation.");
+  flag("       --lib", "Specify library files to be included in the compilation.");
   console.log(`
-    one or more:  ${bold(
-      "'es5' (default)"
-    )}, 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'esnext'
-                   'dom' or 'webworker'
+  one or more:  'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 
+                 'es2020', 'esnext', 'dom' or 'webworker'
+      default:  ${bold("'es5'")}
+
   `);
 
   flag(" --module, -m", "Specify module code generation.");
   console.log(`
-        any of:  'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'esnext''
-       default:  ${bold("CommonJS")}  if target is ES3 or ES5
-                 ${bold("ES6/ES2015")} if target is ES6 and higher
+        any of:  'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'esnext'
+       default:  ${bold("'commonjs'")} if target is ES3 or ES5
+                 ${bold("'ES2015'")} if target is ES6 and higher
   `);
 
   flag("        --jsx", "Specify library files to be included in the compilation.");
   console.log(`
-          any of:  'preserve', 'react-native', 'react', 'react-jsx' or 'react-jsxdev'
+        any of:  'preserve', 'react-native', 'react', 'react-jsx' or 'react-jsxdev'
   `);
 
   flag("     --strict", "Enable all strict type-checking options.");
@@ -86,7 +87,9 @@ if (!isAll) {
 }
 
 else {
-  subtitle("Project");
+  title("All Compiler Options");
+  console.log("### " + "Projects" + "\n");
+
   flag("--composite", "Generates corresponding d.ts files");
   flag("--disableSourceOfProjectReferenceRedirect", "Generates corresponding d.ts files");
   flag("--disableSolutionSearching", "Generates corresponding d.ts files");
@@ -95,22 +98,25 @@ else {
 
 
   subtitle("Language & Environment");
+
   flag(
     "--target, -t",
     "Set the JavaScript language version for emitted JavaScript\n                 and include compatible library declarations."
   );
   console.log(`
-        any of:  ${bold("'es3' (default)")}, 'es5', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 
-                   'es2020', or 'esnext'.
+       any of:  'es3', 'es5', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 
+                 'es2020', or 'esnext'.
+      default:  ${bold("'es3'")}
   `);
 
-  flag("        --lib", "Specify library files to be included in the compilation.");
+  flag("       --lib", "Specify library files to be included in the compilation.");
   console.log(`
-    one or more:  ${bold(
-      "'es5' (default)"
-    )}, 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'esnext'
-                   'dom' or 'webworker'
+  one or more:  'es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 'es2019', 
+                 'es2020', 'esnext', 'dom' or 'webworker'
+      default:  ${bold("'es5'")}
+
   `);
+
 
   subtitle("Build");
   flag("--declaration         ", "Generates corresponding d.ts files");
@@ -119,7 +125,7 @@ else {
   flag("--declarationMap      ", "Generates a sourcemap for each corresponding '.d.ts' file");
   flag(
     "--downlevelIteration  ",
-    "Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'."
+    "Provide full support for iterables in 'for-of', spread, and destructuring when \n                           targeting 'ES5' or 'ES3'."
   );
 }
 
@@ -142,20 +148,21 @@ Once set, you can configure watch mode with:
   flag("--watchFile", "         Specify how the TypeScript watch mode works.");
   flag(
     "--watchDirectory",
-    "    Specify how directories are watched on systems that lack recursive file-watching functionality."
+    "    Specify how directories are watched on systems that lack recursive\n                         file-watching functionality."
   );
   flag(
     "--fallbackPolling",
-    "   Specify what approach the watcher should use if the system runs out of native file watchers."
+    "   Specify what approach the watcher should use if the system runs out\n                         of native file watchers."
   );
 
-  console.log("")
+  console.log("\n")
   title("Build Option");
 
   console.log(`Using ${blue(bold("--build"))}, ${blue(
     bold("-b")
   )} will make tsc behave more like a build orchestrator than a compiler.
-This is used to trigger building composite projects which you can learn more about at https://aka.ms/tsc-composite-builds.
+This is used to trigger building composite projects which you can learn
+more about at https://aka.ms/tsc-composite-builds.
   `);
 
   flag("--clean", "  Delete the outputs of all projects.");
