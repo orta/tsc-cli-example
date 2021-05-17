@@ -10,7 +10,7 @@ const flag = (name: string, desc: string) => {
 const isAll = Deno.args.find((f) => f === "--all");
 
 const prefix = " ".repeat(100);
-const tsSquareTop = blue(bgBlue("....."));
+const tsSquareTop = blue(bgBlue("     "));
 const tsSquareBottom = bgBlue(bold(rgb24("  TS ", 0xffFFff)));
 
 console.log("");
@@ -90,7 +90,7 @@ else {
   title("All Compiler Options");
   console.log("### " + "Projects" + "\n");
 
-  flag("                               --composite", "Generates corresponding d.ts files");
+  flag("                              --composite", "Generates corresponding d.ts files");
   flag("--disableSourceOfProjectReferenceRedirect", "Generates corresponding d.ts files");
   flag("               --disableSolutionSearching", "Generates corresponding d.ts files");
   flag("                        --tsBuildInfoFile", "Generates corresponding d.ts files");
